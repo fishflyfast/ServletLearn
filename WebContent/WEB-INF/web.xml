@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
-  <display-name>Demo3</display-name>
+  <display-name>Demo4</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -11,41 +11,42 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>HelloServlet</display-name>
-    <servlet-name>HelloServlet</servlet-name>
-    <servlet-class>name.zkm.servlet.HelloServlet</servlet-class>
-    <init-param>
-      <param-name>company</param-name>
-      <param-value>imodou</param-value>
-    </init-param>
-    <init-param>
-      <param-name>address</param-name>
-      <param-value>yichang</param-value>
-    </init-param>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>name.zkm.servlet.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/HelloServlet</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
-  
-  
   <servlet>
     <description></description>
-    <display-name>SecondServlet</display-name>
-    <servlet-name>SecondServlet</servlet-name>
-    <servlet-class>name.zkm.servlet.SecondServlet</servlet-class>
+    <display-name>jumpServlet</display-name>
+    <servlet-name>jumpServlet</servlet-name>
+    <servlet-class>name.zkm.servlet.JumpServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>SecondServlet</servlet-name>
-    <url-pattern>/SecondServlet</url-pattern>
+    <servlet-name>jumpServlet</servlet-name>
+    <url-pattern>/jump</url-pattern>
   </servlet-mapping>
-  
-  <context-param>
-  	<param-name>globalcompany</param-name>
-  	<param-value>moudoukeji</param-value>
-  </context-param>
-  <context-param>
-  	<param-name>globaladdress</param-name>
-  	<param-value>yichangshidongshandadao</param-value>
-  </context-param>
+  <servlet>
+    <description></description>
+    <display-name>JumpServlet2</display-name>
+    <servlet-name>JumpServlet2</servlet-name>
+    <servlet-class>name.zkm.servlet.JumpServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JumpServlet2</servlet-name>
+    <url-pattern>/Jump2</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>JumpServlet3</display-name>
+    <servlet-name>JumpServlet3</servlet-name>
+    <servlet-class>name.zkm.servlet.JumpServlet3</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>JumpServlet3</servlet-name>
+    <url-pattern>/Jump3</url-pattern>
+  </servlet-mapping>
 </web-app>

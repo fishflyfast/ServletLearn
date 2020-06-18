@@ -1,50 +1,50 @@
 package name.zkm.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.ServletContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class SecondServlet
+ * Servlet implementation class jumpServlet
  */
-public class SecondServlet extends HttpServlet {
+public class JumpServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SecondServlet() {
+    public JumpServlet() {
         super();
+        // TODO Auto-generated constructor stub
     }
 
-	/** 注意有坑:response.setContentType必须在getWriter之前调用,否则不起作用.
+	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//下面演示了Servlet全局参数的获取方法
-		ServletContext context = super.getServletContext();
-		String company = context.getInitParameter("globalcompany");
-		String address = context.getInitParameter("globaladdress");
-		
-		context.log("输出参数内容begin.");
-		PrintWriter out = response.getWriter();
-		out.println("公司名称" + company);
-		out.println("公司地址" + address);
-		context.log("输出参数内容end.");
-		out.close();
+		request.setCharacterEncoding("utf-8");
+		String name = request.getParameter("uname");
+		String pwd = request.getParameter("upwd");
+		response.setContentType("text/html;charset=utf-8");
+		if("zkm".contentEquals(name) && "1234".contentEquals(pwd)) {
+			//跳转方式1:重定向
+			response.sendRedirect("/ServletLearn/welcome.jsp");
+		} else {
+			//跳转方式2:请求转发
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

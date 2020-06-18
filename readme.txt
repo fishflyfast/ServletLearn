@@ -1,11 +1,12 @@
 bilibili地址:https://www.bilibili.com/video/BV184411V7H8
 
-2020.3.15初次开发,6.18整理
+2020.4.25初次开发,6.18整理
 
-访问方法:http://host:port/ServletLearn/ServletName
+
+访问方法:http://host:port/ServletLearn/login.jsp
 
 这个Demo演示的内容:
-1.Servlet的体系结构与请求区分,是通过直接创建Servlet来实现的,之前的2个Demo是写的Servelt类,自己配置的.
-2.Servlet的参数:配置方法及使用方法
+1.处理表单数据,前台JSP页面通过form提交,后台接收并处理.
+2.乱码问题
+3.重定向与请求转发,请求转发可以发给JSP页面,也可以发给另一个Servlet,同时在request中放置不同属性.
 
-演示了通过jsp页面调用Get和POST请求的方法 .
