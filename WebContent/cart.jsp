@@ -8,19 +8,19 @@
 </head>
 <body>
 	
-	<form action="/ServletLearn/Jump2" method="post">
+	<form action="CartServlet" method="post">
 		<table>
 			<tr>
-				<td>用户名</td>
-				<td><input type="text" name="uname"/></td>
+				<td>物品</td>
+				<td><input type="text" name="goods"/></td>
 			</tr>
 			<tr>
-				<td>密码</td>
-				<td><input type="password" name="upwd"/></td>
+				<td>数量</td>
+				<td><input type="text" name="num"/></td>
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="登录"/><input type="reset" value="重置"/></td>
+				<td><input type="submit" value="放入购物车"/><input type="reset" value="重置"/></td>
 			</tr>
 		</table>
 	</form>

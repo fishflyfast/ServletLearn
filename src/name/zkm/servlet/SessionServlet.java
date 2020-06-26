@@ -7,17 +7,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class JumpServlet3
+ * Servlet implementation class SessionServlet
  */
-public class JumpServlet3 extends HttpServlet {
+public class SessionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JumpServlet3() {
+    public SessionServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,13 +27,13 @@ public class JumpServlet3 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html;charset=utf-8");
-		//取出前一个请求存放的内容.如果前一个请求是转发到这里的,则可以获取到,如果是重定向的,则获取不到值.
-		String name = (String)request.getAttribute("what");
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//session测试
+		HttpSession session = request.getSession();
+		String id = session.getId();
 		PrintWriter out = response.getWriter();
-		out.println("<h1>Welcome Servlet ! " + name);
-		out.flush();
+		out.println(id);
 		out.close();
 	}
 

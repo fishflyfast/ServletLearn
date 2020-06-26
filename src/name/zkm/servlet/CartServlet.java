@@ -1,23 +1,25 @@
 package name.zkm.servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class JumpServlet2
+ * Servlet implementation class CartServlet
  */
-public class JumpServlet2 extends HttpServlet {
+public class CartServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public JumpServlet2() {
+    public CartServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,20 +28,24 @@ public class JumpServlet2 extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
 		request.setCharacterEncoding("utf-8");
-		String name = request.getParameter("uname");
-		String pwd = request.getParameter("upwd");
-		response.setContentType("text/html;charset=utf-8");
-		if("zkm".contentEquals(name) && "1234".contentEquals(pwd)) {
-			//往请求中放属性
-			request.setAttribute("what", "测试Servlet");
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/Jump3");
-			dispatcher.forward(request, response);
-		} else {
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/login.jsp");
-			dispatcher.forward(request, response);
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String goods = request.getParameter("goods");
+		String num = request.getParameter("num");
+		
+		HttpSession session = request.getSession();
+		Map<String, Integer> cart = (Map<String, Integer>)session.getAttribute("cart");
+		if(cart == null) {
+			cart = new HashMap<String, Integer>();
 		}
+		
+		cart.put(goods, Integer.parseInt(num));
+		session.setAttribute("cart", cart);
+		response.sendRedirect("cart.jsp");
+		System.out.println(cart);
 	}
 
 	/**
